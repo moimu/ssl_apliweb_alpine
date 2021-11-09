@@ -1,0 +1,29 @@
+version: 'ssl'
+services:
+
+  php:
+    build: ./php
+    image: "daw-php:2021.11"
+    container_name: php-ssl
+    volumes:
+      - "./www:/var/www/html"
+    networks:
+      red-ssl:
+
+  apache:
+    build: ./apache
+    image: "daw-apache:2021.11"
+    container_name: apache-ssl
+    ports:
+      - "80:80"
+      # Exponemos puerto 443 web SSL
+      - "443:443"
+    volumes:
+    - "./www:/var/www/html"
+    - "/etc/letsencrypt:/etc/letsencrypt" 
+    - "/var/lib/letsencrypt:/var/lib/letsencrypt"
+    networks:
+      red-ssl:
+
+networks:
+      red-ssl:
