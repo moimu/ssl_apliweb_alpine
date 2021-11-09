@@ -1,4 +1,4 @@
-version: 'ssl'
+version: '3.8'
 services:
 
   php:
@@ -15,7 +15,7 @@ services:
     image: "daw-apache:2021.11"
     container_name: apache-ssl
     ports:
-      - "80:80"
+      - "8081:80"
       # Exponemos puerto 443 web SSL
       - "443:443"
     volumes:

@@ -16,5 +16,8 @@ RUN apk add certbot
 RUN apk add --upgrade certbot-apache
 RUN apk add certbot-nginx
 
-# RUN apk add apache2-ctl
+# instalar modulo apache2-ctl
+RUN apk add apache2-ctl
+# Alpine no tiene instalado rc-service 
+RUN apk add openrc --no-cache
 # https://certbot.eff.org/docs/contributing.html#plugin-architecture
